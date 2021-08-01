@@ -1,5 +1,7 @@
 package com.gchelper.gchelper;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +23,7 @@ public class TestController {
         return "bye";
     }
 
-
+    @GetMapping("cos/{id}")
+    public String cos(@PathVariable String id) {return id;}
 
 }
