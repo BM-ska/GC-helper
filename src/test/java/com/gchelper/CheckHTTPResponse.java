@@ -1,4 +1,4 @@
-package com.gchelper.gchelper;
+package com.gchelper;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
