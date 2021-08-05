@@ -14,31 +14,28 @@ class OwnerForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: "undeclared",
-            cacheName: "undeclared",
-            cacheNumber: "undeclared",
+            userName: "",
+            cacheName: "",
+            GCCode: "",
 
             ifHint: false,
-            hint: "undeclared",
+            hint: "",
             whenHint: 0,
 
             ifCoordinates : true,
             ifText : false,
-            solveCoordinates: "undeclared",
-            solveText: "undeclared"
+            solveCoordinates: "",
+            solveText: ""
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     handleInputChange(event) {
-
     }
-
 
     render() {
         return (
-
             <form>
                 <div>
                     <label>User name: &nbsp; </label>
@@ -59,9 +56,9 @@ class OwnerForm extends React.Component {
                     <br />
                     <label>GC-code: &nbsp; GC-</label>
                     <input
-                        name="cacheNumber"
+                        name="GCCode"
                         type="text"
-                        checked={this.state.cacheNumber}
+                        checked={this.state.GCCode}
                         onChange={this.handleInputChange} />
                     <br />
 
@@ -94,7 +91,7 @@ class OwnerForm extends React.Component {
                                 value={this.state.whenHint}
                                 onChange={this.handleInputChange} />
 
-                        </div>: null
+                        </div> : null
                     }
                 </div>
 
