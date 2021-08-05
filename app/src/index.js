@@ -22,12 +22,12 @@ class OwnerForm extends React.Component {
             hint: "",
             whenHint: 0,
 
-            ifCoordinates : true,
+            ifCoordinates : false,
             ifText : false,
             solveCoordinates: "",
             solveText: ""
         };
-        this.handleInputChange = this.handleInputChange.bind(this)//tmp
+
         this.handleTextChange = this.handleTextChange.bind(this);
         this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
 
@@ -37,10 +37,6 @@ class OwnerForm extends React.Component {
         alert('submit');
         event.preventDefault();
     }
-
-    handleInputChange(event) {//tmp
-    }
-
 
     handleTextChange(event) {
         this.setState({[event.target.name]: event.target.value});
@@ -59,7 +55,7 @@ class OwnerForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit = {this.handleSubmit}>
                 <div>
                     <label>User name: &nbsp; </label>
                     <input
@@ -83,6 +79,7 @@ class OwnerForm extends React.Component {
                         type="text"
                         checked={this.state.GCCode}
                         onChange={this.handleTextChange} />
+
                     <br />
 
                 </div>
@@ -103,7 +100,7 @@ class OwnerForm extends React.Component {
                                 name="hint"
                                 type="text"
                                 checked={this.state.hint}
-                                onChange={this.handleInputChange} />
+                                onChange={this.handleTextChange} />
 
 
                             <br/>
@@ -112,7 +109,7 @@ class OwnerForm extends React.Component {
                                 name="whenHint"
                                 type="number"
                                 value={this.state.whenHint}
-                                onChange={this.handleInputChange} />
+                                onChange={this.handleTextChange} />
 
                         </div> : null
                     }
@@ -143,7 +140,7 @@ class OwnerForm extends React.Component {
                                 name="solveCoordinates"
                                 type="text"
                                 checked={this.state.solveCoordinates}
-                                onChange={this.handleInputChange} />
+                                onChange={this.handleTextChange} />
                             <br/>
 
                         </div> : null
