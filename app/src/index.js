@@ -18,11 +18,12 @@ class OwnerForm extends React.Component {
             cacheName: "undeclared",
             cacheNumber: "undeclared",
 
-            ifHint: true,
+            ifHint: false,
             hint: "undeclared",
             whenHint: 0,
 
-            ifCoordinates : false,
+            ifCoordinates : true,
+            ifText : false,
             solveCoordinates: "undeclared",
             solveText: "undeclared"
         };
@@ -95,7 +96,48 @@ class OwnerForm extends React.Component {
 
                         </div>: null
                     }
+                </div>
 
+                <div >
+                    <label>The form of the answer:</label>
+                    <br/>
+                    <label>Coordinates &nbsp; </label>
+                    <input
+                        name="ifCoordinates"
+                        type="checkbox"
+                        checked={this.state.ifCoordinates}
+                        onChange={this.handleInputChange} />
+
+                    <label> &nbsp; Text &nbsp; </label>
+                    <input
+                        name="ifText"
+                        type="checkbox"
+                        checked={this.state.ifText}
+                        onChange={this.handleInputChange} />
+
+
+                    {this.state.ifCoordinates ?
+                        <div>
+                            <label>Lat and Lon: &nbsp; </label>
+                            <input
+                                name="solveCoordinates"
+                                type="text"
+                                checked={this.state.solveCoordinates}
+                                onChange={this.handleInputChange} />
+                            <br/>
+
+                        </div> :
+                        <div>
+                            <label>Text: &nbsp; </label>
+                            <input
+                                name="solveText"
+                                type="text"
+                                checked={this.state.solveText}
+                                onChange={this.handleInputChange} />
+                            <br/>
+
+                        </div>
+                    }
                 </div>
 
             </form>
