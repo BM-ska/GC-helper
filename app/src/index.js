@@ -27,8 +27,8 @@ class OwnerForm extends React.Component {
             solveCoordinates: "",
             solveText: ""
         };
-
-        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this)//tmp
+        this.handleTextChange = this.handleTextChange.bind(this);
         this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
 
     }
@@ -38,8 +38,12 @@ class OwnerForm extends React.Component {
         event.preventDefault();
     }
 
+    handleInputChange(event) {//tmp
+    }
 
-    handleInputChange(event) {
+
+    handleTextChange(event) {
+        this.setState({[event.target.name]: event.target.value});
     }
 
     handleCheckboxChange(event) {
@@ -62,7 +66,7 @@ class OwnerForm extends React.Component {
                         name="userName"
                         type="text"
                         checked={this.state.userName}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleTextChange} />
 
                     <br />
                     <label>Cache name: &nbsp; </label>
@@ -70,7 +74,7 @@ class OwnerForm extends React.Component {
                         name="cacheName"
                         type="text"
                         checked={this.state.cacheName}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleTextChange} />
 
                     <br />
                     <label>GC-code: &nbsp; GC-</label>
@@ -78,7 +82,7 @@ class OwnerForm extends React.Component {
                         name="GCCode"
                         type="text"
                         checked={this.state.GCCode}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleTextChange} />
                     <br />
 
                 </div>
@@ -151,7 +155,7 @@ class OwnerForm extends React.Component {
                                 name="solveText"
                                 type="text"
                                 checked={this.state.solveText}
-                                onChange={this.handleInputChange} />
+                                onChange={this.handleTextChange} />
                             <br/>
 
                         </div> : null
