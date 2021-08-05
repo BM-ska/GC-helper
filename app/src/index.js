@@ -29,14 +29,33 @@ class OwnerForm extends React.Component {
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+
     }
+
+    handleSubmit = (event) =>{
+        alert('submit');
+        event.preventDefault();
+    }
+
 
     handleInputChange(event) {
     }
 
+    handleCheckboxChange(event) {
+        this.setState({[event.target.name]: event.target.checked});
+
+        if(event.target.name === "ifText")
+            this.setState({ifCoordinates : false});
+
+        else
+            this.setState({ifText : false});
+
+    }
+
     render() {
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <div>
                     <label>User name: &nbsp; </label>
                     <input
@@ -70,7 +89,7 @@ class OwnerForm extends React.Component {
                         name="ifHint"
                         type="checkbox"
                         checked={this.state.ifHint}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleCheckboxChange} />
 
 
                     {this.state.ifHint ?
@@ -103,14 +122,14 @@ class OwnerForm extends React.Component {
                         name="ifCoordinates"
                         type="checkbox"
                         checked={this.state.ifCoordinates}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleCheckboxChange} />
 
                     <label> &nbsp; Text &nbsp; </label>
                     <input
                         name="ifText"
                         type="checkbox"
                         checked={this.state.ifText}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleCheckboxChange} />
 
 
                     {this.state.ifCoordinates ?
@@ -123,7 +142,9 @@ class OwnerForm extends React.Component {
                                 onChange={this.handleInputChange} />
                             <br/>
 
-                        </div> :
+                        </div> : null
+                    }
+                    {this.state.ifText ?
                         <div>
                             <label>Text: &nbsp; </label>
                             <input
@@ -133,10 +154,12 @@ class OwnerForm extends React.Component {
                                 onChange={this.handleInputChange} />
                             <br/>
 
-                        </div>
+                        </div> : null
                     }
+
                 </div>
 
+                <input type="submit" value="Submit" />
             </form>
         );
     }
