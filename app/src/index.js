@@ -17,8 +17,14 @@ class OwnerForm extends React.Component {
             userName: "undeclared",
             cacheName: "undeclared",
             cacheNumber: "undeclared",
-            ifHint: false,
-            whenHint: 0
+
+            ifHint: true,
+            hint: "undeclared",
+            whenHint: 0,
+
+            ifCoordinates : false,
+            solveCoordinates: "undeclared",
+            solveText: "undeclared"
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -28,23 +34,69 @@ class OwnerForm extends React.Component {
 
     }
 
+
     render() {
         return (
-            <form>
-                <label>Do you want a hint?: &nbsp; </label>
-                <input
-                    name="ifHint"
-                    type="checkbox"
-                    checked={this.state.ifHint}
-                    onChange={this.handleInputChange} />
 
-                <br />
-                <label>After how many wrong answers?: &nbsp; </label>
-                <input
-                    name="whenHint"
-                    type="number"
-                    value={this.state.whenHint}
-                    onChange={this.handleInputChange} />
+            <form>
+                <div>
+                    <label>User name: &nbsp; </label>
+                    <input
+                        name="userName"
+                        type="text"
+                        checked={this.state.userName}
+                        onChange={this.handleInputChange} />
+
+                    <br />
+                    <label>Cache name: &nbsp; </label>
+                    <input
+                        name="cacheName"
+                        type="text"
+                        checked={this.state.cacheName}
+                        onChange={this.handleInputChange} />
+
+                    <br />
+                    <label>GC-code: &nbsp; GC-</label>
+                    <input
+                        name="cacheNumber"
+                        type="text"
+                        checked={this.state.cacheNumber}
+                        onChange={this.handleInputChange} />
+                    <br />
+
+                </div>
+
+                <div >
+                    <label>Do you want a hint?: &nbsp; </label>
+                    <input
+                        name="ifHint"
+                        type="checkbox"
+                        checked={this.state.ifHint}
+                        onChange={this.handleInputChange} />
+
+
+                    {this.state.ifHint ?
+                        <div>
+                            <label>Hint: &nbsp; </label>
+                            <input
+                                name="hint"
+                                type="text"
+                                checked={this.state.hint}
+                                onChange={this.handleInputChange} />
+
+
+                            <br/>
+                            <label>After how many wrong answers?: &nbsp; </label>
+                            <input
+                                name="whenHint"
+                                type="number"
+                                value={this.state.whenHint}
+                                onChange={this.handleInputChange} />
+
+                        </div>: null
+                    }
+
+                </div>
 
             </form>
         );
