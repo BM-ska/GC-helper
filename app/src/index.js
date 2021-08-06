@@ -22,28 +22,47 @@ class OwnerForm extends React.Component {
             hint: "",
             whenHint: 0,
 
-            ifCoordinates : true,
+            ifCoordinates : false,
             ifText : false,
             solveCoordinates: "",
             solveText: ""
         };
 
-        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleTextChange = this.handleTextChange.bind(this);
+        this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+
     }
 
-    handleInputChange(event) {
+    handleSubmit = (event) =>{
+        alert('submit');
+        event.preventDefault();
+    }
+
+    handleTextChange(event) {
+        this.setState({[event.target.name]: event.target.value});
+    }
+
+    handleCheckboxChange(event) {
+        this.setState({[event.target.name]: event.target.checked});
+
+        if(event.target.name === "ifText")
+            this.setState({ifCoordinates : false});
+
+        else
+            this.setState({ifText : false});
+
     }
 
     render() {
         return (
-            <form>
+            <form onSubmit = {this.handleSubmit}>
                 <div>
                     <label>User name: &nbsp; </label>
                     <input
                         name="userName"
                         type="text"
                         checked={this.state.userName}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleTextChange} />
 
                     <br />
                     <label>Cache name: &nbsp; </label>
@@ -51,7 +70,7 @@ class OwnerForm extends React.Component {
                         name="cacheName"
                         type="text"
                         checked={this.state.cacheName}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleTextChange} />
 
                     <br />
                     <label>GC-code: &nbsp; GC-</label>
@@ -59,7 +78,8 @@ class OwnerForm extends React.Component {
                         name="GCCode"
                         type="text"
                         checked={this.state.GCCode}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleTextChange} />
+
                     <br />
 
                 </div>
@@ -70,7 +90,7 @@ class OwnerForm extends React.Component {
                         name="ifHint"
                         type="checkbox"
                         checked={this.state.ifHint}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleCheckboxChange} />
 
 
                     {this.state.ifHint ?
@@ -80,7 +100,7 @@ class OwnerForm extends React.Component {
                                 name="hint"
                                 type="text"
                                 checked={this.state.hint}
-                                onChange={this.handleInputChange} />
+                                onChange={this.handleTextChange} />
 
 
                             <br/>
@@ -89,7 +109,7 @@ class OwnerForm extends React.Component {
                                 name="whenHint"
                                 type="number"
                                 value={this.state.whenHint}
-                                onChange={this.handleInputChange} />
+                                onChange={this.handleTextChange} />
 
                         </div> : null
                     }
@@ -103,14 +123,14 @@ class OwnerForm extends React.Component {
                         name="ifCoordinates"
                         type="checkbox"
                         checked={this.state.ifCoordinates}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleCheckboxChange} />
 
                     <label> &nbsp; Text &nbsp; </label>
                     <input
                         name="ifText"
                         type="checkbox"
                         checked={this.state.ifText}
-                        onChange={this.handleInputChange} />
+                        onChange={this.handleCheckboxChange} />
 
 
                     {this.state.ifCoordinates ?
@@ -120,23 +140,27 @@ class OwnerForm extends React.Component {
                                 name="solveCoordinates"
                                 type="text"
                                 checked={this.state.solveCoordinates}
-                                onChange={this.handleInputChange} />
+                                onChange={this.handleTextChange} />
                             <br/>
 
-                        </div> :
+                        </div> : null
+                    }
+                    {this.state.ifText ?
                         <div>
                             <label>Text: &nbsp; </label>
                             <input
                                 name="solveText"
                                 type="text"
                                 checked={this.state.solveText}
-                                onChange={this.handleInputChange} />
+                                onChange={this.handleTextChange} />
                             <br/>
 
-                        </div>
+                        </div> : null
                     }
+
                 </div>
 
+                <input type="submit" value="Submit" />
             </form>
         );
     }
