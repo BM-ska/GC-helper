@@ -24,4 +24,5 @@ public class TestController {
 
     @GetMapping("cos/{id}")
     public String cos(@PathVariable String id) {return id;}
+
 }

@@ -24,19 +24,23 @@ class OwnerForm extends React.Component {
     }
 
     handleSubmit = (event) =>{
-        alert('submit');
+        alert(this.state.userName);
         event.preventDefault();
     }
 
     handleTextChange(event) {
-        fetch('cos/1')
+        fetch("validator/" + event.target.value)
             .then(response => response.json())
-            .then(data => this.setState({liczba: data, isLoading: false}));
-
-        this.setState({[event.target.name]: event.target.value});
+            .then(data => {
+                if(data)
+                    this.setState({[event.target.name]: event.target.value});
+                else
+                    alert("error")
+            });
     }
 
     handleCheckboxChange(event) {
+
         this.setState({[event.target.name]: event.target.checked});
 
         if(event.target.name === "ifText")
