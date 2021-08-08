@@ -62,3 +62,4 @@ Run `yarn build start`
 1. Checker
 2. Add Geocoins collector
 3. Change selected caches to premium member
+4. Create GC-trace
