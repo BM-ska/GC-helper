@@ -29,13 +29,14 @@ class OwnerForm extends React.Component {
     }
 
     handleTextChange(event) {
-        fetch("validator/" + event.target.value)
+
+        fetch("validator/"+ event.target.name + "/" + event.target.value)
             .then(response => response.json())
             .then(data => {
                 if(data)
                     this.setState({[event.target.name]: event.target.value});
                 else
-                    alert("error")
+                    alert(event.target.name)
             });
     }
 
